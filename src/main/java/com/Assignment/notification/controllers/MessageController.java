@@ -5,11 +5,9 @@ import com.Assignment.notification.model.MessageRequestModel;
 import com.Assignment.notification.services.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.Optional;
 
 @RestController
@@ -18,21 +16,16 @@ import java.util.Optional;
 
 public class MessageController {
 
-    @Autowired
-    private KafkaTemplate<String, String> theKafkaTemplate;
-
-    private static final String TOPIC= "theKafkaTopic";
 
     @Autowired
     private MessageService theMessageService;
 
 
     @PostMapping
-    public String sendSMSHandler(@RequestBody MessageRequestModel theRequest)
-    {
-        theKafkaTemplate.send(TOPIC, "theRequest");
-        System.out.println("Kafka tried");
-        return theMessageService.sendSMS(theRequest);
+    public String sendSMSHandler(@RequestBody MessageRequestModel theRequest) throws ChangeSetPersister.NotFoundException {
+
+        String theId = theMessageService.sendSMS(theRequest);
+        return theId;
     }
 
     @GetMapping ("/{id}")

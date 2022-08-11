@@ -2,6 +2,7 @@ package com.Assignment.notification.services;
 
 import com.Assignment.notification.model.MessageModel;
 import com.Assignment.notification.model.MessageRequestModel;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
