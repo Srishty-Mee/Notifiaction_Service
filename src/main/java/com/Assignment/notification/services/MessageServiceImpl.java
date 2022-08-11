@@ -7,14 +7,15 @@ import com.Assignment.notification.services.kafkaService.ProducerServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.UUID;
 
 
-@Repository
-@Primary
+@Service
 public class MessageServiceImpl implements MessageService{
 
     @Autowired

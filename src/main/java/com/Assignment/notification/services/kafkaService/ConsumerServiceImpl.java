@@ -30,7 +30,7 @@ public class ConsumerServiceImpl implements ConsumerService {
         if(theMessageModel==null){
             LOGGER.info("null id received by consumer");
         }
-        else if(theRedisService.CheckIfBlacklisted(theMessageModel.getPhoneNumber())){
+        else if(theRedisService.CheckIfBlacklistedRedis(theMessageModel.getPhoneNumber())){
             LOGGER.info("BlackListed Number");
         }
         else

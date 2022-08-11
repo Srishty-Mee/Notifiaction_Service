@@ -22,14 +22,14 @@ public class MessageController {
 
 
     @PostMapping
-    public String sendSMSHandler(@RequestBody MessageRequestModel theRequest) throws ChangeSetPersister.NotFoundException {
+    public String SendSMS(@RequestBody MessageRequestModel theRequest) throws ChangeSetPersister.NotFoundException {
 
         String theId = theMessageService.sendSMS(theRequest);
         return theId;
     }
 
     @GetMapping ("/{id}")
-    public  Optional<MessageModel> getDetailsHandler(@PathVariable String id)
+    public  Optional<MessageModel> GetDetailsById(@PathVariable String id)
     {
         return  theMessageService.getDetailsById(id);
     }

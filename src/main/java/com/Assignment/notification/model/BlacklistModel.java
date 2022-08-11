@@ -9,27 +9,20 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Date;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import java.io.Serializable;
 
-
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "sms_requests")
-public class MessageModel implements Serializable{
+@Table(name = "black_list")
+public class BlacklistModel implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
-    private String id;
+    private int id;
     private String phoneNumber;
-    private String message;
-    private int status;
-    private int failureCode;
-    private String failureComments;
-    private Date createdAt=new Date();
-    private Date updatedAt;
-
-    //private String thirdPartyResponse;
 }
