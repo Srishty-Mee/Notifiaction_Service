@@ -4,11 +4,9 @@ import com.Assignment.notification.model.MessageModel;
 import com.Assignment.notification.model.MessageRequestModel;
 import com.Assignment.notification.repositories.MessageDBRepo;
 import com.Assignment.notification.services.kafkaService.ProducerServiceImpl;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -28,11 +26,13 @@ public class MessageServiceImpl implements MessageService{
     public String sendSMS(MessageRequestModel theRequest) {
 
         MessageModel msg= new MessageModel();
+
         BeanUtils.copyProperties(theRequest, msg);
         msg.setId(UUID.randomUUID().toString());
 
+
         try{
-            //theMessageDBRepo.save(msg);
+            theMessageDBRepo.save(msg);
             theProducerService.publishMessage(msg.getId());
         } catch (Exception theException){
             System.out.println("not published");

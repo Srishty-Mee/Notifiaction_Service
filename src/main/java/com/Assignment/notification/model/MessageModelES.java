@@ -1,14 +1,14 @@
 package com.Assignment.notification.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Setting;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import java.util.Date;
 import java.io.Serializable;
 
@@ -16,22 +16,22 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "sms_requests")
-public class MessageModel implements Serializable{
+@Document(indexName = "sms_services")
+@Setting(settingPath = "static/es-settings.json")
+@Builder
+public class MessageModelES implements Serializable{
 
     @Id
-    @Column(nullable = false)
     private String id;
     private String phoneNumber;
     private String message;
     private int status;
     private int failureCode;
     private String failureComments;
-
-    @JsonFormat(pattern = "dd-mm-yyyy")
     private Date createdAt=new Date();
     private Date updatedAt;
 
     //private String thirdPartyResponse;
 }
+
+
