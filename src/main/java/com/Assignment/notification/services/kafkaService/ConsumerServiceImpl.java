@@ -5,6 +5,7 @@ import com.Assignment.notification.model.MessageModelES;
 import com.Assignment.notification.repositories.MessageDBRepo;
 import com.Assignment.notification.repositories.MessageESRepo;
 import com.Assignment.notification.services.RedisService;
+import com.Assignment.notification.utils.thirdPartyAPI.IMISMSSender;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -27,6 +28,9 @@ public class ConsumerServiceImpl implements ConsumerService {
     @Autowired
     private MessageESRepo theESRepo;
 
+    @Autowired
+    private IMISMSSender theSMSService;
+
     @KafkaListener(topics = "notification.send_sms", groupId = "myGroup")
     public  void consumeMessage(String theId){
 
@@ -42,17 +46,27 @@ public class ConsumerServiceImpl implements ConsumerService {
         else
         {
             try {
+
+                //3rd party API Call
+                String response = theSMSService.ExternalAPICall
+                        (theMessageModel.getId(), theMessageModel.getPhoneNumber(), theMessageModel.getMessage());
+
+
+                //Database Update
+                //theMessageDBRepo.save(theMessageModel);
+                LOGGER.info("Updated in Database");
+
+
+                //Elasticsearch Update
                 MessageModelES theESMessage= new MessageModelES();
                 BeanUtils.copyProperties(theMessageModel, theESMessage);
-                //theMessageDBRepo.save(theMessageModel);
-                System.out.println("Message saved in DB");
                 theESRepo.save(theESMessage);
-                System.out.println("Message saved in ES with below id");
-                System.out.println(theESMessage.getId());
+                LOGGER.info("Message saved in ES with below id");
+                LOGGER.info(theESMessage.getId());
 
             }
             catch(Exception ex){
-                System.out.println(ex);
+                ex.printStackTrace();
             }
 
         }

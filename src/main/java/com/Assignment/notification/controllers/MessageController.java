@@ -5,8 +5,8 @@ import com.Assignment.notification.model.MessageRequestModel;
 import com.Assignment.notification.services.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.Optional;
 
@@ -16,23 +16,19 @@ import java.util.Optional;
 
 public class MessageController {
 
-
     @Autowired
     private MessageService theMessageService;
 
 
     @PostMapping
-    public String SendSMS(@RequestBody MessageRequestModel theRequest) throws ChangeSetPersister.NotFoundException {
-
+    public String SendSMS(@RequestBody MessageRequestModel theRequest) {
         String theId = theMessageService.sendSMS(theRequest);
         return theId;
     }
 
-    @GetMapping ("/{id}")
-    public  Optional<MessageModel> GetDetailsById(@PathVariable String id)
-    {
+    @GetMapping("/{id}")
+    public  Optional<MessageModel> GetDetailsById(@PathVariable String id) {
         return  theMessageService.getDetailsById(id);
     }
-
 
 }

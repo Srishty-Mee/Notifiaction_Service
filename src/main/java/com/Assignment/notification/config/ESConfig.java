@@ -31,9 +31,9 @@ public class ESConfig extends AbstractElasticsearchConfiguration {
         return client;
     }
 
-    @Bean
-    public ElasticsearchOperations elasticsearchTemplate() {
-        return new ElasticsearchRestTemplate(elasticsearchClient());
-    }
+//    @Bean
+//    public ElasticsearchOperations elasticsearchTemplate() {
+//        return new ElasticsearchRestTemplate(elasticsearchClient());
+//    }
 
 }
