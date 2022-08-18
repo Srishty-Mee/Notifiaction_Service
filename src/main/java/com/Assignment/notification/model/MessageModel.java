@@ -9,12 +9,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import java.util.Calendar;
 import java.util.Date;
 import java.io.Serializable;
 
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "sms_requests")
@@ -29,9 +30,17 @@ public class MessageModel implements Serializable{
     private int failureCode;
     private String failureComments;
 
-    @JsonFormat(pattern = "dd-mm-yyyy")
-    private Date createdAt=new Date();
+
+    private Date createdAt;
     private Date updatedAt;
+
+    public void setCreatedAt() {
+        this.createdAt =Calendar.getInstance().getTime();
+    }
+    public MessageModel()
+    {
+        setCreatedAt();
+    }
 
     //private String thirdPartyResponse;
 }

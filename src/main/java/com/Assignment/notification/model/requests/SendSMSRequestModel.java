@@ -1,4 +1,4 @@
-package com.Assignment.notification.model;
+package com.Assignment.notification.model.requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,7 @@ import lombok.NonNull;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MessageRequestModel {
+public class SendSMSRequestModel {
 
     @NonNull
     private String phoneNumber;

@@ -1,7 +1,7 @@
 package com.Assignment.notification.controllers;
 
 import com.Assignment.notification.model.MessageModel;
-import com.Assignment.notification.model.MessageRequestModel;
+import com.Assignment.notification.model.requests.SendSMSRequestModel;
 import com.Assignment.notification.services.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,7 +21,7 @@ public class MessageController {
 
 
     @PostMapping
-    public String SendSMS(@RequestBody MessageRequestModel theRequest) {
+    public String SendSMS(@RequestBody SendSMSRequestModel theRequest) {
         String theId = theMessageService.sendSMS(theRequest);
         return theId;
     }

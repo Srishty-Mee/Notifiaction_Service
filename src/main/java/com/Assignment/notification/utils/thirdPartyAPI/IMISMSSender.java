@@ -6,8 +6,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+@Component
 public class IMISMSSender {
 
     @Value("${external_api_url}")
@@ -18,6 +20,7 @@ public class IMISMSSender {
 
     @Autowired
     public RestTemplate theRestTemplate;
+
 
     public String ExternalAPICall(String theId, String thePhoneNumber, String theMessage){
 
@@ -30,7 +33,7 @@ public class IMISMSSender {
 
             JsonNode rootNode = theMapper.readTree(response);
             JsonNode responseNode = rootNode.path("response");
-            JsonNode transId = responseNode.at("/response/transid");
+            JsonNode transId = responseNode.path("transid");
 
             if(transId.toString().length()>0){
                 return theMapper.treeToValue(responseNode, Response.class).toString();

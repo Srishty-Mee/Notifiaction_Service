@@ -1,7 +1,7 @@
 package com.Assignment.notification.services;
 
 import com.Assignment.notification.model.MessageModel;
-import com.Assignment.notification.model.MessageRequestModel;
+import com.Assignment.notification.model.requests.SendSMSRequestModel;
 import com.Assignment.notification.repositories.MessageDBRepo;
 import com.Assignment.notification.services.kafkaService.ProducerServiceImpl;
 
@@ -23,7 +23,7 @@ public class MessageServiceImpl implements MessageService{
     private ProducerServiceImpl theProducerService;
 
     @Override
-    public String sendSMS(MessageRequestModel theRequest) {
+    public String sendSMS(SendSMSRequestModel theRequest) {
 
         MessageModel msg= new MessageModel();
 
