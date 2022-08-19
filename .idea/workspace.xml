@@ -5,45 +5,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8b7c03c-9b37-41e9-a9af-d90dc381e809" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/config/OtherConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/requests/SearchByDateAndNumberModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/requests/SearchByTextModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/customExceptions/ServiceException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/response/Error.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/response/ErrorResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/response/SMSSucessResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/services/HelperService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/utils/enums/FailureEnums.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/controllers/BlacklistController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/controllers/BlacklistController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/controllers/ESController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/controllers/ESController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/controllers/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/controllers/MessageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/MessageModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/MessageModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/MessageRequestModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/requests/SendSMSRequestModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/response/ErrorResponseModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/response/SucessResponseModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/MessageModelES.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/MessageModelES.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/requests/SearchByDateAndNumberModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/requests/SearchByDateAndNumberModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/repositories/BlacklistRepo.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/repositories/MessageESRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/repositories/MessageESRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/services/BlacklistService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/services/BlacklistRedisService/BlacklistService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/services/BlacklistServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/services/BlacklistRedisService/BlacklistServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/services/ESService/ESService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/services/ESService/ESService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/services/ESService/ESServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/services/ESService/ESServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/services/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/services/MessageService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/services/MessageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/services/MessageServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/services/RedisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/services/BlacklistRedisService/RedisService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/services/RedisServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/services/BlacklistRedisService/RedisServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/services/kafkaService/ConsumerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/services/kafkaService/ConsumerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/utils/thirdPartyAPI/IMISMSSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/utils/thirdPartyAPI/IMISMSSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/utils/enums/ErrorCodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/utils/enums/ErrorCodes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/controllers/BlackListController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/controllers/BlackListController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/controllers/ESController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/controllers/ESController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/controllers/MessageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/controllers/MessageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/ExtSMS/Channels$ChannelsBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/ExtSMS/Channels.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/ExtSMS/Channels.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/ExtSMS/Destination$DestinationBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/ExtSMS/Destination.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/ExtSMS/Destination.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/ExtSMS/SMS$SMSBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/ExtSMS/SMS.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/ExtSMS/SMS.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/ExtSMS/ThirdPartySMSModel$ThirdPartySMSModelBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/ExtSMS/ThirdPartySMSModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/ExtSMS/ThirdPartySMSModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/MessageModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/MessageModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/MessageRequestModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/response/ErrorResponseModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/response/SucessResponseModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/MessageModelES$MessageModelESBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/MessageModelES$MessageModelESBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/MessageModelES.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/MessageModelES.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/requests/SearchByDateAndNumberModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/requests/SearchByDateAndNumberModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/repositories/BlackListRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/repositories/MessageESRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/repositories/MessageESRepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/services/BlackListService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/services/BlackListServiceImpl.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/services/ESService/ESService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/services/ESService/ESService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/services/ESService/ESServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/services/ESService/ESServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/services/MessageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/services/MessageService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/services/MessageServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/services/MessageServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/services/RedisService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/services/RedisServiceImpl.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/services/kafkaService/ConsumerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/services/kafkaService/ConsumerServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/utils/thirdPartyAPI/IMISMSBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/utils/thirdPartyAPI/IMISMSBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/utils/thirdPartyAPI/IMISMSSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/utils/thirdPartyAPI/IMISMSSender.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/utils/enums/ErrorCodes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/utils/enums/ErrorCodes.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +60,7 @@
       <list>
         <option value="Interface" />
         <option value="Kotlin Class" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>

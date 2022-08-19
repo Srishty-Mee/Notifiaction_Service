@@ -1,5 +1,6 @@
 package com.Assignment.notification.utils.enums;
 
+
 public enum ErrorCodes {
 
     NOT_FOUND_ERROR(404),
