@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 public class ThirdPartySMSModel {
 
-    private String deliveryChannel;
+    private String deliverychannel;
     private Channels channels;
     private List<Destination> destination;
 

@@ -12,5 +12,5 @@ import java.util.List;
 public class Destination {
 
     private List<String> msisdn;
-    private  String correlationId;
+    private  String correlationid;
 }

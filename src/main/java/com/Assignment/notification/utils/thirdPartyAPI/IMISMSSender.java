@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,19 +16,25 @@ public class IMISMSSender {
 
     @Value("${external_api_url}")
     private String theURL;
+    @Value("${headerName}")
+    private String headerName;
+    @Value("${headerValue}")
+    private String headerValue;
 
     @Autowired
     private IMISMSBuilder theSMSBuilder;
 
-    @Autowired
-    public RestTemplate theRestTemplate;
 
+    @Autowired
+    public RestTemplate theRestTemplate= new RestTemplateBuilder()
+            .defaultHeader(headerName,headerValue).build();
 
     public String ExternalAPICall(String theId, String thePhoneNumber, String theMessage){
 
         ThirdPartySMSModel theSMSModel = theSMSBuilder.buildExternalRequestModel(theId,thePhoneNumber, theMessage );
 
         try{
+
             String response = theRestTemplate.postForObject(theURL,theSMSModel,String.class);
 
             ObjectMapper theMapper = new ObjectMapper();

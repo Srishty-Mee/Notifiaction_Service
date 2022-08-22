@@ -3,8 +3,6 @@ package com.Assignment.notification.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,8 +19,6 @@ import java.io.Serializable;
 @Entity
 @Table(name = "sms_requests")
 public class MessageModel implements Serializable{
-    Logger LOGGER = LoggerFactory.getLogger(MessageModel.class);
-
     @Id
     @Column(nullable = false)
     private String id;
@@ -45,7 +41,6 @@ public class MessageModel implements Serializable{
     public MessageModel()
     {
         setCreatedAt();
-        LOGGER.info(String.valueOf(createdAt));
     }
 
     //private String thirdPartyResponse;
