@@ -5,25 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8b7c03c-9b37-41e9-a9af-d90dc381e809" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/config/OtherConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/controllers/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/controllers/MessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/ExtSMS/Destination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/ExtSMS/Destination.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/ExtSMS/ThirdPartySMSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/ExtSMS/ThirdPartySMSModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/MessageModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/MessageModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/utils/thirdPartyAPI/IMISMSSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/utils/thirdPartyAPI/IMISMSSender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/config/OtherConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/config/OtherConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/controllers/MessageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/controllers/MessageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/ExtSMS/Destination.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/ExtSMS/Destination.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/ExtSMS/ThirdPartySMSModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/ExtSMS/ThirdPartySMSModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/MessageModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/model/MessageModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/services/BlacklistRedisService/BlacklistServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/services/BlacklistRedisService/BlacklistServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/services/BlacklistRedisService/RedisService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/services/BlacklistRedisService/RedisService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/services/BlacklistRedisService/RedisServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/services/BlacklistRedisService/RedisServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/services/ESService/ESServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/services/ESService/ESServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/config/OtherConfig.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/Assignment/notification/utils/thirdPartyAPI/IMISMSSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Assignment/notification/utils/thirdPartyAPI/IMISMSSender.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -16,18 +16,14 @@ public class IMISMSSender {
 
     @Value("${external_api_url}")
     private String theURL;
-    @Value("${headerName}")
-    private String headerName;
-    @Value("${headerValue}")
-    private String headerValue;
 
     @Autowired
     private IMISMSBuilder theSMSBuilder;
 
-
-    @Autowired
     public RestTemplate theRestTemplate= new RestTemplateBuilder()
-            .defaultHeader(headerName,headerValue).build();
+            .defaultHeader("key","93ceffda-5941-11ea-9da9-025282c394f2")
+            .defaultHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
+            .build();
 
     public String ExternalAPICall(String theId, String thePhoneNumber, String theMessage){
 
