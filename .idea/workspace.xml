@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8b7c03c-9b37-41e9-a9af-d90dc381e809" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/config/OtherConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/config/OtherConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/config/OtherConfig.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/controllers/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/controllers/MessageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/ExtSMS/Destination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/ExtSMS/Destination.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/ExtSMS/ThirdPartySMSModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Assignment/notification/model/ExtSMS/ThirdPartySMSModel.java" afterDir="false" />
