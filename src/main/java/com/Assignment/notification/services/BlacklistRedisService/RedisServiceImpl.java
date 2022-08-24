@@ -1,6 +1,7 @@
 package com.Assignment.notification.services.BlacklistRedisService;
 
 import com.Assignment.notification.customExceptions.ServiceException;
+import com.Assignment.notification.utils.enums.CustomErrorCodes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.Set;
 
 @Service
@@ -29,7 +29,7 @@ public class RedisServiceImpl implements RedisService {
         }
         catch (Exception ex)
         {
-            throw new ServiceException("REDIS_ERROR", "Error occurred at redis service");
+            throw new ServiceException(CustomErrorCodes.REDIS_ERROR, "Error occurred at redis service");
         }
 
     }
@@ -41,7 +41,7 @@ public class RedisServiceImpl implements RedisService {
         }
         catch (Exception ex)
         {
-            throw new ServiceException("REDIS_ERROR", "Error occurred at redis service");
+            throw new ServiceException(CustomErrorCodes.REDIS_ERROR, "Error occurred at redis service");
         }
 
     }
@@ -53,13 +53,19 @@ public class RedisServiceImpl implements RedisService {
         }
         catch (Exception ex)
         {
-            throw new ServiceException("REDIS_ERROR", "Error occurred at redis service");
+            throw new ServiceException(CustomErrorCodes.REDIS_ERROR, "Error occurred at redis service");
         }
 
     }
 
     @Override
     public Boolean CheckIfBlacklistedRedis(String thePhoneNumber) {
-        return  theRedisTemplate.opsForSet().isMember(KEY, thePhoneNumber);
+        try {
+            return  theRedisTemplate.opsForSet().isMember(KEY, thePhoneNumber);
+        }
+        catch (Exception ex)
+        {
+            throw new ServiceException(CustomErrorCodes.REDIS_ERROR, "Error occurred at redis service");
+        }
     }
 }

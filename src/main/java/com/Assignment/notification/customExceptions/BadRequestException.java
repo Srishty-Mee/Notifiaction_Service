@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @Component
 @Data
 @NoArgsConstructor
-@ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
-public class ServiceException extends RuntimeException{
-
+@ResponseStatus(HttpStatus.BAD_REQUEST)
+public class BadRequestException extends RuntimeException{
     private CustomErrorCodes errorCode;
     private String message;
 
-    public ServiceException( CustomErrorCodes customCode, String message){
+    public BadRequestException( CustomErrorCodes errorCode, String message) {
         super();
-        this.errorCode = customCode;
-        this.message = message;
+        this.errorCode = errorCode;
+        this.message=message;
     }
+
 }

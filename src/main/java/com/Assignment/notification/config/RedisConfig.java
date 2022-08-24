@@ -1,4 +1,4 @@
-package com.Assignment.notification.config.Redis;
+package com.Assignment.notification.config;
 
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;

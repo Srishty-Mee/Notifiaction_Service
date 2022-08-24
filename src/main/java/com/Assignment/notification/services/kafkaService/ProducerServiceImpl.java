@@ -1,5 +1,7 @@
 package com.Assignment.notification.services.kafkaService;
 
+import com.Assignment.notification.customExceptions.ServiceException;
+import com.Assignment.notification.utils.enums.CustomErrorCodes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,13 @@ public class ProducerServiceImpl implements ProducerService {
 
     public void publishMessage(String theMessage)
     {
-        theKafkaTemplate.send("notification.send_sms", theMessage);
+        try {
+            theKafkaTemplate.send("notification.send_sms", theMessage);
+            LOGGER.info("Producer published");
+        } catch (Exception ex) {
+            throw new ServiceException(CustomErrorCodes.KAFKA_ERROR, "Message not published by producer");
+        }
+
         LOGGER.info("Message Sent -> " + theMessage);
     }
 }

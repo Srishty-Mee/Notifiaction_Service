@@ -1,7 +1,8 @@
 package com.Assignment.notification.services.BlacklistRedisService;
 
-import com.Assignment.notification.customExceptions.ServiceException;
-import com.Assignment.notification.services.HelperService;
+import com.Assignment.notification.customExceptions.BadRequestException;
+import com.Assignment.notification.services.OtherServices.HelperService;
+import com.Assignment.notification.utils.enums.CustomErrorCodes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,33 +21,23 @@ public class BlacklistServiceImpl implements BlacklistService {
 
     @Override
     public Set getAll() {
-        try {
             return  theRedisService.getAllRedis();
-        }
-        catch (ServiceException ex)
-        {
-            throw new ServiceException(ex.getErrorCode(), ex.getErrorMessage());
-        }
     }
 
     @Override
     public String addToBlacklist(List<String> theList) {
 
-        if(theList.size()==0)throw new ServiceException("EMPTY_LIST", "can not process an empty list");
+        if(theList.size()==0)throw new BadRequestException(CustomErrorCodes.EMPTY_LIST, "can not process an empty list");
         int validCount=0, invalidCount=0, inBlacklist=0;
         for(String theNumber: theList) {
-            if(theHelperService.validNumber(theNumber) ) invalidCount++;
-            else if(!checkIfBlackListed(theNumber))inBlacklist++;
+            if(!theHelperService.validNumber(theNumber) )
+                invalidCount++;
+            else if(checkIfBlackListed(theNumber))
+                inBlacklist++;
             else
             {
                 validCount++;
-                try{
-                    theRedisService.addToBlacklistRedis(theNumber);
-                }
-                catch (ServiceException ex)
-                {
-                    throw new ServiceException(ex.getErrorCode(), ex.getErrorMessage());
-                }
+                theRedisService.addToBlacklistRedis(theNumber);
             }
         }
         return String.valueOf(validCount)+ " number(s) blacklisted, " + String.valueOf(invalidCount)+ " invalid number(s) found, "
@@ -55,27 +46,29 @@ public class BlacklistServiceImpl implements BlacklistService {
 
 
     @Override
-    public String whitelist(List<String> theList) {
-        if(theList.size()==0)throw new ServiceException("EMPTY_LIST", "can not process an empty list");
+    public String whitelist(List<String> theList){
+
+        if(theList.size()==0)
+            throw new BadRequestException(CustomErrorCodes.EMPTY_LIST, "Can not process an empty list.");
+
         int validCount=0, invalidCount=0, inWhitelist=0;
         for(String theNumber: theList) {
-            if(theHelperService.validNumber(theNumber) ) invalidCount++;
-            else if(!checkIfBlackListed(theNumber))inWhitelist++;
-            else
+            if(theHelperService.validNumber(theNumber) ==false )
+                invalidCount++;
+            else if(checkIfBlackListed(theNumber)==false)
+                inWhitelist++;
+            else {
                 validCount++;
-                try{
-                    theRedisService.whiteListRedis(theNumber);
-                }
-                catch (ServiceException ex)
-                {
-                    throw new ServiceException(ex.getErrorCode(), ex.getErrorMessage());
-                }
+                theRedisService.whiteListRedis(theNumber);
             }
-        return String.valueOf(validCount)+ " number(s) blacklisted, " + String.valueOf(invalidCount)+ " invalid number(s) found "
+        }
+        return String.valueOf(validCount)+ " number(s) whitelisted, " + String.valueOf(invalidCount)+ " invalid number(s) found "
                 +String.valueOf(inWhitelist)+ " number(s) were already in whitelist" ;
 
     }
 
     @Override
-    public boolean checkIfBlackListed(String theNumber) { return theRedisService.CheckIfBlacklistedRedis(theNumber); }
+    public boolean checkIfBlackListed(String theNumber) {
+            return theRedisService.CheckIfBlacklistedRedis(theNumber);
+    }
 }

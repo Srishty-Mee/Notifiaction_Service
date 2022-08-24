@@ -3,17 +3,18 @@ package com.Assignment.notification.model.requests;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
+
+import javax.validation.constraints.NotNull;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class SendSMSRequestModel {
 
-    @NonNull
+    @NotNull(message = "Enter a valid phone number.")
     private String phoneNumber;
 
-    @NonNull
+    @NotNull(message = "Enter a valid message.")
     private String message;
 
 }

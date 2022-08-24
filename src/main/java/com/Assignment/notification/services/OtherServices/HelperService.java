@@ -1,4 +1,4 @@
-package com.Assignment.notification.services;
+package com.Assignment.notification.services.OtherServices;
 
 import org.springframework.stereotype.Service;
 

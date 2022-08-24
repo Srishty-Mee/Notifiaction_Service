@@ -10,15 +10,16 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @Component
 @Data
 @NoArgsConstructor
-@ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
-public class ServiceException extends RuntimeException{
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class NotFoundException extends RuntimeException{
 
     private CustomErrorCodes errorCode;
     private String message;
 
-    public ServiceException( CustomErrorCodes customCode, String message){
+    public NotFoundException ( CustomErrorCodes errorCode, String message){
         super();
-        this.errorCode = customCode;
-        this.message = message;
+        this.errorCode = errorCode;
+        this.message=message;
     }
+
 }

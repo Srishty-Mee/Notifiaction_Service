@@ -1,12 +1,15 @@
 package com.Assignment.notification.services.ESService;
 
+import com.Assignment.notification.customExceptions.BadRequestException;
+import com.Assignment.notification.customExceptions.NotFoundException;
 import com.Assignment.notification.customExceptions.ServiceException;
 import com.Assignment.notification.model.MessageModelES;
 import com.Assignment.notification.model.requests.SearchByDateAndNumberModel;
 import com.Assignment.notification.model.requests.SearchByTextModel;
 import com.Assignment.notification.repositories.MessageESRepo;
 
-import com.Assignment.notification.services.HelperService;
+import com.Assignment.notification.services.OtherServices.HelperService;
+import com.Assignment.notification.utils.enums.CustomErrorCodes;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.slf4j.Logger;
@@ -55,7 +58,7 @@ public class ESServiceImpl implements  ESService{
         }
         catch (Exception ex)
         {
-            throw new ServiceException("SERVICE_ERROR", "Something went wrong in ElasticSearch");
+            throw new ServiceException(CustomErrorCodes.ES_ERROR, "Something went wrong in ElasticSearch");
         }
     }
 
@@ -66,30 +69,36 @@ public class ESServiceImpl implements  ESService{
         }
         catch (Exception ex)
         {
-            throw new ServiceException("SERVICE_ERROR", "Something went wrong in ElasticSearch");
+            throw new ServiceException(CustomErrorCodes.ES_ERROR, "Something went wrong in ElasticSearch");
         }
 
     }
 
     @Override
     public List<MessageModelES> getByPhoneNumberAndBetweenDates(SearchByDateAndNumberModel theRequest) throws ParseException {
-        long theStartDate= new SimpleDateFormat("dd/MM/yyyy").parse(theRequest.getStartDate()).getTime();
-        long theEndDate= new SimpleDateFormat("dd/MM/yyyy").parse(theRequest.getEndDate()).getTime();
 
-        int pageNo= theRequest.getPageNo()-1;
-
-        if (theEndDate < theStartDate ){
-            throw new ServiceException("INVALID_DATES", "Start date is after End date");
+        long theEndDate, theStartDate;
+        try {
+            theStartDate = new SimpleDateFormat("dd/MM/yyyy").parse(theRequest.getStartDate()).getTime();
+            theEndDate = new SimpleDateFormat("dd/MM/yyyy").parse(theRequest.getEndDate()).getTime();
+        } catch (Exception ex) {
+            throw new BadRequestException(CustomErrorCodes.INVALID_REQUEST, "Enter proper start and end date");
         }
 
-        boolean isNumberValid= theHelperService.validNumber(theRequest.getPhoneNumber());
-        if(!isNumberValid)
-            throw new ServiceException("INVALID_REQUEST", "Invalid Phone Number");
+        int pageNo = theRequest.getPageNo() - 1;
+
+        if (theEndDate < theStartDate) {
+            throw new BadRequestException(CustomErrorCodes.INVALID_REQUEST, "Start date is after End date");
+        }
+
+        boolean isNumberValid = theHelperService.validNumber(theRequest.getPhoneNumber());
+        if (!isNumberValid)
+            throw new BadRequestException(CustomErrorCodes.INVALID_REQUEST, "Invalid Phone Number");
 
 
         try {
-            Criteria theCriteria1 = new Criteria ("phoneNumber").matches(theRequest.getPhoneNumber());
-            Criteria theCriteria2 = new Criteria ("createdAt").
+            Criteria theCriteria1 = new Criteria("phoneNumber").matches(theRequest.getPhoneNumber());
+            Criteria theCriteria2 = new Criteria("createdAt").
                     greaterThanEqual(theStartDate).lessThanEqual(theEndDate).and(theCriteria1);
 
             Query searchQuery = new CriteriaQuery(theCriteria2)
@@ -97,20 +106,16 @@ public class ESServiceImpl implements  ESService{
 
             SearchHits<MessageModelES> smsRecordSearchHits = elasticsearchOps
                     .search(searchQuery, MessageModelES.class, IndexCoordinates.of(ES_INDEX));
-            LOGGER.info(String.valueOf(smsRecordSearchHits.getTotalHits()) +" match found.");
+            LOGGER.info(String.valueOf(smsRecordSearchHits.getTotalHits()) + " match found.");
 
             if (smsRecordSearchHits.getTotalHits() <= pageNo * PAGE_SIZE) {
-                throw new ServiceException("INVALID_PAGE_NUMBER", "No more results to show");
+                throw new NotFoundException(CustomErrorCodes.NO_DATA_FOUND, "No more results to show");
             }
             return smsRecordSearchHits.stream().map(SearchHit::getContent).collect(Collectors.toList());
-        }
-        catch (ServiceException ex)
-        {
-            throw new ServiceException(ex.getErrorCode(), ex.getErrorMessage());
-        }
-        catch (Exception ex)
-        {
-            throw new ServiceException("SERVICE_ERROR", "Something went wrong in ElasticSearch");
+        } catch (ServiceException ex) {throw ex;
+        } catch (NotFoundException ex) {throw ex;
+        } catch (Exception ex) {
+            throw new ServiceException(CustomErrorCodes.ES_ERROR, "Something went wrong in ElasticSearch");
         }
 
     }
@@ -123,8 +128,7 @@ public class ESServiceImpl implements  ESService{
         String theSearchText= theRequest.getText();
 
         if(theSearchText.length()==0)
-            throw new ServiceException("INVALID_TEXT", "text field can not be empty");
-
+            throw new BadRequestException(CustomErrorCodes.INVALID_REQUEST, "text field can not be empty");
 
         int pageNo= theRequest.getPageNo()-1;
         String search= "*" + theSearchText.toLowerCase()+"*";
@@ -140,20 +144,19 @@ public class ESServiceImpl implements  ESService{
             LOGGER.info("The text '" + theSearchText + "' found in " +
                     String.valueOf(smsRecordSearchHits.getTotalHits()) + " records.");
 
+            LOGGER.info("Displaying page number " + String.valueOf(pageNo ));
             LOGGER.info("Displaying page number " + String.valueOf(pageNo + 1));
 
             if (smsRecordSearchHits.getTotalHits() <= pageNo * PAGE_SIZE) {
-                throw new ServiceException("INVALID_PAGE", "No more results to show");
+                throw new NotFoundException(CustomErrorCodes.NO_DATA_FOUND, "No more results to show");
             }
             return smsRecordSearchHits.stream().map(SearchHit::getContent).collect(Collectors.toList());
         }
-        catch (ServiceException ex)
-        {
-            throw new ServiceException(ex.getErrorCode(), ex.getErrorMessage());
-        }
+        catch (ServiceException ex) {throw ex;}
+        catch (NotFoundException ex) {throw ex;}
         catch (Exception ex)
         {
-            throw new ServiceException("SERVICE_ERROR", "Something went wrong in ElasticSearch");
+            throw new ServiceException(CustomErrorCodes.ES_ERROR, "Something went wrong in ElasticSearch");
         }
     }
 
