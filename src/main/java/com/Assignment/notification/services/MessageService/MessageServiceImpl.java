@@ -1,4 +1,4 @@
-package com.Assignment.notification.services.MessageService;
+package com.Assignment.notification.services.messageService;
 
 import com.Assignment.notification.customExceptions.BadRequestException;
 import com.Assignment.notification.customExceptions.NotFoundException;
@@ -7,8 +7,8 @@ import com.Assignment.notification.model.MessageModel;
 import com.Assignment.notification.model.requests.SendSMSRequestModel;
 import com.Assignment.notification.model.response.SMSSucessResponse;
 import com.Assignment.notification.repositories.MessageDBRepo;
-import com.Assignment.notification.services.BlacklistRedisService.BlacklistService;
-import com.Assignment.notification.services.OtherServices.HelperService;
+import com.Assignment.notification.services.blacklistRedisService.BlacklistService;
+import com.Assignment.notification.services.otherServices.HelperService;
 import com.Assignment.notification.services.kafkaService.ProducerServiceImpl;
 
 import com.Assignment.notification.utils.enums.CustomErrorCodes;
@@ -45,8 +45,9 @@ public class MessageServiceImpl implements MessageService {
 
         //////////checking the request
 
-        if(theHelperService.validNumber(theRequest.getPhoneNumber())==false)
+        if(theHelperService.validNumber(theRequest.getPhoneNumber())==false) {
             throw new BadRequestException(CustomErrorCodes.INVALID_REQUEST, "Invalid Phone Number");
+        }
 
         if(theRequest.getMessage().length()==0)
             throw new BadRequestException(CustomErrorCodes.INVALID_REQUEST, "Empty message can not be sent.");

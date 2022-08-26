@@ -1,4 +1,4 @@
-package com.Assignment.notification.services.OtherServices;
+package com.Assignment.notification.services.otherServices;
 
 import com.Assignment.notification.customExceptions.AuthenticationException;
 import com.Assignment.notification.utils.enums.CustomErrorCodes;

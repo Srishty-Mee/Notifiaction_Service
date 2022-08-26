@@ -1,8 +1,11 @@
-package com.Assignment.notification.services.BlacklistRedisService;
+package com.Assignment.notification.services.blacklistRedisService;
 
 import com.Assignment.notification.customExceptions.BadRequestException;
-import com.Assignment.notification.services.OtherServices.HelperService;
+import com.Assignment.notification.services.messageService.MessageServiceImpl;
+import com.Assignment.notification.services.otherServices.HelperService;
 import com.Assignment.notification.utils.enums.CustomErrorCodes;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,13 +22,17 @@ public class BlacklistServiceImpl implements BlacklistService {
     @Autowired
     private HelperService theHelperService;
 
+    private static final Logger LOGGER =
+            LoggerFactory.getLogger(MessageServiceImpl.class);
     @Override
     public Set getAll() {
-            return  theRedisService.getAllRedis();
+        LOGGER.info("get complete blacklist called.");
+        return  theRedisService.getAllRedis();
     }
 
     @Override
     public String addToBlacklist(List<String> theList) {
+        LOGGER.info("add to blacklist called.");
 
         if(theList.size()==0)throw new BadRequestException(CustomErrorCodes.EMPTY_LIST, "can not process an empty list");
         int validCount=0, invalidCount=0, inBlacklist=0;
@@ -47,7 +54,7 @@ public class BlacklistServiceImpl implements BlacklistService {
 
     @Override
     public String whitelist(List<String> theList){
-
+        LOGGER.info("remove from blacklist called.");
         if(theList.size()==0)
             throw new BadRequestException(CustomErrorCodes.EMPTY_LIST, "Can not process an empty list.");
 
@@ -69,6 +76,7 @@ public class BlacklistServiceImpl implements BlacklistService {
 
     @Override
     public boolean checkIfBlackListed(String theNumber) {
-            return theRedisService.CheckIfBlacklistedRedis(theNumber);
+            LOGGER.info("check if blacklisted called.");
+        return theRedisService.CheckIfBlacklistedRedis(theNumber);
     }
 }

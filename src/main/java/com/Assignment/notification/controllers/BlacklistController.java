@@ -1,11 +1,7 @@
 package com.Assignment.notification.controllers;
 
-import com.Assignment.notification.customExceptions.BadRequestException;
-import com.Assignment.notification.customExceptions.ServiceException;
 import com.Assignment.notification.model.requests.BlacklistRequestModel;
-import com.Assignment.notification.model.response.Error;
-import com.Assignment.notification.model.response.ErrorResponse;
-import com.Assignment.notification.services.BlacklistRedisService.BlacklistService;
+import com.Assignment.notification.services.blacklistRedisService.BlacklistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

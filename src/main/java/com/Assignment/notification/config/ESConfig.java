@@ -19,8 +19,6 @@ import org.springframework.data.elasticsearch.repository.config.EnableElasticsea
 @ComponentScan(basePackages = {"com.Assignment.notification"})
 public class ESConfig extends AbstractElasticsearchConfiguration {
 
-//    @Value("${elasticsearch.url}")
-//    public String elasticsearchURL;
 
     @Bean
     @Override
@@ -31,9 +29,6 @@ public class ESConfig extends AbstractElasticsearchConfiguration {
         return client;
     }
 
-//    @Bean
-//    public ElasticsearchOperations elasticsearchTemplate() {
-//        return new ElasticsearchRestTemplate(elasticsearchClient());
-//    }
+
 
 }

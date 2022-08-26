@@ -1,6 +1,6 @@
 package com.Assignment.notification.config;
 
-import com.Assignment.notification.services.OtherServices.HeaderAuthService;
+import com.Assignment.notification.services.otherServices.HeaderAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

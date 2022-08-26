@@ -1,4 +1,4 @@
-package com.Assignment.notification.services.MessageService;
+package com.Assignment.notification.services.messageService;
 
 import com.Assignment.notification.model.MessageModel;
 import com.Assignment.notification.model.requests.SendSMSRequestModel;

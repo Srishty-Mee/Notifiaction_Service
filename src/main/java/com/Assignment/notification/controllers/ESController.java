@@ -4,7 +4,7 @@ import com.Assignment.notification.model.MessageModelES;
 import com.Assignment.notification.model.requests.SearchByDateAndNumberModel;
 import com.Assignment.notification.model.requests.SearchByTextModel;
 
-import com.Assignment.notification.services.ESService.ESService;
+import com.Assignment.notification.services.esService.ESService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -61,7 +61,7 @@ public class ESController {
 
     @GetMapping("/text")
     public ResponseEntity<?> getByMessage(@RequestBody @Valid SearchByTextModel theRequest) throws Exception {
-            List<MessageModelES> res =messageESService.findSmsContainsText(theRequest);
+            List<MessageModelES> res =messageESService.getByText(theRequest);
 
             HashMap<String,List<MessageModelES>> response= new HashMap<>();
             response.put("data", res);

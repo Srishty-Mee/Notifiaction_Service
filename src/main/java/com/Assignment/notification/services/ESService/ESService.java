@@ -1,4 +1,4 @@
-package com.Assignment.notification.services.ESService;
+package com.Assignment.notification.services.esService;
 
 import com.Assignment.notification.model.MessageModelES;
 import com.Assignment.notification.model.requests.SearchByDateAndNumberModel;
@@ -15,5 +15,5 @@ public interface ESService {
 
     List<MessageModelES> getByPhoneNumberAndBetweenDates(SearchByDateAndNumberModel theRequest) throws Exception;
 
-    List<MessageModelES> findSmsContainsText(SearchByTextModel theRequest) throws Exception;
+    List<MessageModelES> getByText(SearchByTextModel theRequest) throws Exception;
 }

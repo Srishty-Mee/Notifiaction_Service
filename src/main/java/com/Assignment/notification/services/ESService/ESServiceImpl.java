@@ -1,4 +1,4 @@
-package com.Assignment.notification.services.ESService;
+package com.Assignment.notification.services.esService;
 
 import com.Assignment.notification.customExceptions.BadRequestException;
 import com.Assignment.notification.customExceptions.NotFoundException;
@@ -8,7 +8,7 @@ import com.Assignment.notification.model.requests.SearchByDateAndNumberModel;
 import com.Assignment.notification.model.requests.SearchByTextModel;
 import com.Assignment.notification.repositories.MessageESRepo;
 
-import com.Assignment.notification.services.OtherServices.HelperService;
+import com.Assignment.notification.services.otherServices.HelperService;
 import com.Assignment.notification.utils.enums.CustomErrorCodes;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
@@ -53,24 +53,32 @@ public class ESServiceImpl implements  ESService{
 
     @Override
     public Optional<MessageModelES> getById(String id) {
+        Optional<MessageModelES> res;
         try {
-            return theESRepo.findById(id);
+            res= theESRepo.findById(id);
         }
         catch (Exception ex)
         {
             throw new ServiceException(CustomErrorCodes.ES_ERROR, "Something went wrong in ElasticSearch");
         }
+        if (res.isEmpty())
+            throw new NotFoundException(CustomErrorCodes.INVALID_ID, "No details for the given id found");
+        return res;
     }
 
     @Override
     public Page<MessageModelES> getAll() {
+        Page<MessageModelES> res;
         try {
-            return (Page<MessageModelES>) theESRepo.findAll();
+            res= (Page<MessageModelES>) theESRepo.findAll();
         }
         catch (Exception ex)
         {
             throw new ServiceException(CustomErrorCodes.ES_ERROR, "Something went wrong in ElasticSearch");
         }
+        if (res.isEmpty())
+            throw new NotFoundException(CustomErrorCodes.INVALID_ID, "No details for the given id found");
+        return res;
 
     }
 
@@ -123,7 +131,7 @@ public class ESServiceImpl implements  ESService{
 
 
     @Override
-    public List<MessageModelES> findSmsContainsText(SearchByTextModel theRequest) {
+    public List<MessageModelES> getByText(SearchByTextModel theRequest) {
 
         String theSearchText= theRequest.getText();
 

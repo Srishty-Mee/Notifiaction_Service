@@ -1,9 +1,9 @@
 package com.Assignment.notification.utils.thirdPartyAPI;
 
-import com.Assignment.notification.model.ExtSMS.Channels;
-import com.Assignment.notification.model.ExtSMS.Destination;
-import com.Assignment.notification.model.ExtSMS.SMS;
-import com.Assignment.notification.model.ExtSMS.ThirdPartySMSModel;
+import com.Assignment.notification.model.extSMS.Channels;
+import com.Assignment.notification.model.extSMS.Destination;
+import com.Assignment.notification.model.extSMS.SMS;
+import com.Assignment.notification.model.extSMS.ThirdPartySMSModel;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

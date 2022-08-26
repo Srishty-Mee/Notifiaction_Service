@@ -1,4 +1,4 @@
-package com.Assignment.notification.model.ExtSMS;
+package com.Assignment.notification.model.extSMS;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

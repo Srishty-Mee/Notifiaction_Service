@@ -2,6 +2,7 @@ package com.Assignment.notification.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -17,6 +18,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @Entity
+@Builder
 @Table(name = "sms_requests")
 public class MessageModel implements Serializable{
     @Id
@@ -34,6 +36,12 @@ public class MessageModel implements Serializable{
 
     @JsonFormat(timezone = "dd/MM/yyyy HH:mm")
     private Date updatedAt;
+
+    public MessageModel(String id, String phone_number, String message) {
+        this.id=id;
+        this.phoneNumber=phone_number;
+        this.message=message;
+    }
 
     public void setCreatedAt() {
         this.createdAt =Calendar.getInstance().getTime();

@@ -28,6 +28,10 @@ public class MessageModelES implements Serializable{
     private Date createdAt;
     private Date updatedAt;
 
+    public MessageModelES(String id, String phoneNumber, String message) {
+        this.id=id; this.phoneNumber=phoneNumber; this.message=message;
+    }
+
     //private String thirdPartyResponse;
 }
 

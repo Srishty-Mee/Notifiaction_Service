@@ -1,4 +1,4 @@
-package com.Assignment.notification.services.BlacklistRedisService;
+package com.Assignment.notification.services.blacklistRedisService;
 
 import com.Assignment.notification.customExceptions.ServiceException;
 import com.Assignment.notification.utils.enums.CustomErrorCodes;

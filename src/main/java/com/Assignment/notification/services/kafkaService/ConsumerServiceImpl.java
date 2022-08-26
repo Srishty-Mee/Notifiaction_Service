@@ -76,7 +76,7 @@ public class ConsumerServiceImpl implements ConsumerService {
 
             }
             catch(Exception ex){
-                throw new ServiceException( CustomErrorCodes.ES_ERROR, "Message not saved in Elastic Search.");
+                //throw new ServiceException( CustomErrorCodes.ES_ERROR, "Message not saved in Elastic Search.");
             }
 
         }

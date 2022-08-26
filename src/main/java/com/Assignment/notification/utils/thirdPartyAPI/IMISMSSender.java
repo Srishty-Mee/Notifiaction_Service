@@ -1,6 +1,6 @@
 package com.Assignment.notification.utils.thirdPartyAPI;
 
-import com.Assignment.notification.model.ExtSMS.ThirdPartySMSModel;
+import com.Assignment.notification.model.extSMS.ThirdPartySMSModel;
 import com.Assignment.notification.model.response.Response;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

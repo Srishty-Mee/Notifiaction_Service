@@ -4,7 +4,7 @@ import com.Assignment.notification.model.MessageModel;
 import com.Assignment.notification.model.requests.SendSMSRequestModel;
 
 import com.Assignment.notification.model.response.SMSSucessResponse;
-import com.Assignment.notification.services.MessageService.MessageService;
+import com.Assignment.notification.services.messageService.MessageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,5 +49,6 @@ public class MessageController {
             return  new ResponseEntity<>(response, HttpStatus.OK);
 
     }
+
 
 }

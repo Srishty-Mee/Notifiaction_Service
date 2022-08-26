@@ -1,4 +1,4 @@
-package com.Assignment.notification.services.BlacklistRedisService;
+package com.Assignment.notification.services.blacklistRedisService;
 
 import org.springframework.stereotype.Component;
 
